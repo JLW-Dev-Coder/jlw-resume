@@ -349,87 +349,103 @@
         overflow: visible;
       }
 
-      /* FORCE header horizontal: photo left, text right */
+      /* Header stays horizontal — photo left, text right */
       .header {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         align-items: center !important;
-        padding: 0.5rem 1.2rem;
-        gap: 0.8rem;
+        padding: 0.4rem 1rem;
+        gap: 0.6rem;
       }
       .photo-ring {
-        width: 5.5rem;
-        height: 5.5rem;
+        width: 4.5rem;
+        height: 4.5rem;
         flex-shrink: 0;
       }
       .header-text { flex: 1; min-width: 0; }
-      .header-name { font-size: 1.5rem; }
-      .header-tagline { font-size: 0.6rem; margin-top: 0; }
-      .header-contact { font-size: 0.65rem; gap: 0.6rem; margin-top: 0.2rem; }
-      .header-contact svg { width: 0.7rem; height: 0.7rem; }
+      .header-name { font-size: 1.4rem; }
+      .header-tagline { font-size: 0.55rem; margin-top: 0; }
+      .header-contact { font-size: 0.6rem; gap: 0.5rem; margin-top: 0.15rem; }
+      .header-contact svg { width: 0.6rem; height: 0.6rem; }
       .accent-bar { height: 2px; }
 
-      /* FORCE body two-column: main left, sidebar right */
+      /* CRITICAL: Convert body to single column for print */
       .body-wrap {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        padding: 0.5rem 1.2rem;
-        gap: 1rem;
+        display: block !important;
+        padding: 0.4rem 1rem;
       }
-      .main { flex: 1; min-width: 0; }
+      .main { width: 100%; }
       .sidebar {
-        width: 13rem !important;
-        min-width: 13rem !important;
-        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: block !important;
       }
 
-      /* Section spacing — tight */
-      section { margin-bottom: 0.45rem; }
-      .sec-title { font-size: 0.85rem; margin-bottom: 0.05rem; }
-      .sec-rule { height: 1.5px; width: 1.8rem; margin-bottom: 0.2rem; }
+      /* Make sidebar tag grids flow horizontally across full width */
+      .sidebar .tag-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.15rem;
+      }
+
+      /* Make sidebar stat cards flow as inline row */
+      .sidebar .stat-card {
+        display: inline-block;
+        width: auto;
+        padding: 0.15rem 0.5rem;
+        margin-right: 0.3rem;
+        margin-bottom: 0.15rem;
+      }
+
+      /* Section spacing */
+      section { margin-bottom: 0.4rem; }
+      .sec-title { font-size: 0.8rem; margin-bottom: 0.05rem; }
+      .sec-rule { height: 1.5px; width: 1.5rem; margin-bottom: 0.15rem; }
 
       /* Summary */
-      .summary-text { font-size: 0.72rem; line-height: 1.35; }
+      .summary-text { font-size: 0.68rem; line-height: 1.35; }
 
       /* Accomplishments */
-      .accom-box { padding: 0.3rem 0.5rem; }
-      .accom-box .sec-title { font-size: 0.72rem; margin-bottom: 0.1rem; }
-      .accom-box p { font-size: 0.65rem; line-height: 1.3; margin-bottom: 0.05rem; }
+      .accom-box { padding: 0.25rem 0.5rem; }
+      .accom-box .sec-title { font-size: 0.68rem; margin-bottom: 0.08rem; }
+      .accom-box p { font-size: 0.6rem; line-height: 1.3; margin-bottom: 0; }
 
       /* Experience */
-      .job { margin-bottom: 0.35rem; }
-      .job-title { font-size: 0.78rem; }
-      .job-dates { font-size: 0.65rem; }
-      .job-company { font-size: 0.65rem; }
+      .job { margin-bottom: 0.3rem; break-inside: avoid; }
+      .job-title { font-size: 0.72rem; }
+      .job-dates { font-size: 0.6rem; }
+      .job-company { font-size: 0.6rem; }
       .job li {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         line-height: 1.3;
         margin-bottom: 0;
-        padding-left: 0.6rem;
+        padding-left: 0.5rem;
       }
-      .job li::before { font-size: 0.6rem; }
+      .job li::before { font-size: 0.55rem; }
 
       /* Education */
-      .edu-degree { font-size: 0.72rem; }
-      .edu-school { font-size: 0.65rem; }
+      .edu-degree { font-size: 0.68rem; }
+      .edu-school { font-size: 0.6rem; }
 
-      /* Software tags */
-      .tag { font-size: 0.55rem; padding: 0.05rem 0.35rem; }
+      /* Software tags — smaller in print */
+      .tag { font-size: 0.5rem; padding: 0.05rem 0.3rem; }
       .tag-grid { gap: 0.1rem; }
 
-      /* Sidebar elements */
-      .stat-card { padding: 0.15rem 0.4rem; margin-bottom: 0.15rem; }
-      .stat-num { font-size: 1rem; line-height: 1; }
-      .stat-label { font-size: 0.5rem; }
-      .cert-list li { font-size: 0.65rem; padding: 0.02rem 0; gap: 0.2rem; }
-      .cert-detail { font-size: 0.55rem; }
-      .spec-list li { font-size: 0.6rem; padding: 0.02rem 0 0.02rem 0.5rem; }
+      /* Sidebar stat cards */
+      .stat-num { font-size: 0.85rem; line-height: 1; }
+      .stat-label { font-size: 0.45rem; }
 
-      /* Page breaks — avoid splitting jobs or sections */
-      .job { break-inside: avoid; }
-      section { break-inside: avoid; }
+      /* Sidebar lists */
+      .cert-list li { font-size: 0.6rem; padding: 0.02rem 0; gap: 0.15rem; }
+      .cert-detail { font-size: 0.5rem; }
+      .spec-list li { font-size: 0.55rem; padding: 0.02rem 0 0.02rem 0.5rem; }
+
+      /* IRS specialties: two-column grid in print to save space */
+      .spec-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 0.5rem;
+      }
 
       @page {
         margin: 0.3in;
