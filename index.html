@@ -338,14 +338,42 @@
 
     /* ── Print ── */
     @media print {
-      body { background: white; padding: 0; }
-      .toolbar { display: none; }
+      html { font-size: 9px; }
+      body { background: white; padding: 0; margin: 0; }
+      .toolbar { display: none !important; }
       .page {
         box-shadow: none;
         width: 100%;
         min-height: auto;
+        overflow: visible;
       }
-      @page { margin: 0.3in; size: letter; }
+      .header {
+        padding: 1.2rem 2rem 1rem;
+        gap: 1.2rem;
+      }
+      .photo-ring {
+        width: 9rem;
+        height: 9rem;
+      }
+      .header-name { font-size: 2.2rem; }
+      .body-wrap {
+        padding: 1rem 2rem 1.2rem;
+        gap: 1.4rem;
+      }
+      .sidebar { width: 16rem; }
+      section { margin-bottom: 1rem; }
+      .job { margin-bottom: 0.7rem; }
+      .summary-text { font-size: 1rem; line-height: 1.45; }
+      .job li { font-size: 0.95rem; line-height: 1.35; }
+      .accom-box p { font-size: 0.9rem; }
+      .tag { font-size: 0.85rem; padding: 0.2rem 0.6rem; }
+      .stat-num { font-size: 1.5rem; }
+      .stat-card { padding: 0.4rem 0.7rem; margin-bottom: 0.3rem; }
+      .sec-title { font-size: 1.15rem; }
+      .sec-rule { margin-bottom: 0.5rem; }
+      .spec-list li { font-size: 0.88rem; }
+      .cert-list li { font-size: 0.88rem; }
+      @page { margin: 0.25in; size: letter; }
     }
 
     /* ── Responsive ── */
