@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jamie L. Williams, EA, CB — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --navy: #16213e;
+      --steel: #0f3460;
+      --gold: #b8860b;
+      --gold-light: #d4a843;
+      --warm-gray: #4a4a5a;
+      --mid-gray: #6b6b7b;
+      --light-gray: #e8e6e1;
+      --cream: #faf8f5;
+      --white: #ffffff;
+      --page-w: 8.5in;
+      --page-h: 11in;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-size: 10px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--ink);
+      background: #d0cec9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ── Download bar ── */
+    .toolbar {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .toolbar button {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.6rem 1.6rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--steel); }
+
+    /* ── Page ── */
+    .page {
+      width: var(--page-w);
+      min-height: var(--page-h);
+      background: var(--white);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.4rem 2.8rem 2rem;
+      background: linear-gradient(135deg, var(--cream) 0%, #e8edf2 100%);
+    }
+    .photo-ring {
+      width: 12.5rem;
+      height: 12.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--navy);
+      box-shadow: 0 3px 16px rgba(22,33,62,0.18);
+      flex-shrink: 0;
+    }
+    .photo-ring img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .header-text { flex: 1; }
+    .header-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 2.6rem;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+    }
+    .header-tagline {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+    .header-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      margin-top: 0.8rem;
+      font-size: 1.05rem;
+      color: var(--warm-gray);
+    }
+    .header-contact span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .header-contact svg {
+      width: 1.3rem;
+      height: 1.3rem;
+      stroke: var(--steel);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .header-contact a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .header-contact a:hover { color: var(--gold); }
+
+    .accent-bar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+    }
+
+    /* ── Body layout ── */
+    .body-wrap {
+      display: flex;
+      padding: 1.6rem 2.8rem 2rem;
+      gap: 2rem;
+    }
+    .main { flex: 1; min-width: 0; }
+    .sidebar { width: 18.5rem; flex-shrink: 0; }
+
+    /* ── Section headings ── */
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .sec-rule {
+      width: 3.2rem;
+      height: 2.5px;
+      background: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    section { margin-bottom: 1.4rem; }
+
+    /* ── Summary ── */
+    .summary-text {
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: var(--warm-gray);
+    }
+
+    /* ── Accomplishments ── */
+    .accom-box {
+      background: linear-gradient(135deg, #e8edf2, var(--cream));
+      border-left: 3px solid var(--gold);
+      border-radius: 2px;
+      padding: 1rem 1.2rem;
+    }
+    .accom-box p {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      font-style: italic;
+      margin-bottom: 0.4rem;
+      line-height: 1.45;
+    }
+    .accom-box p:last-child { margin-bottom: 0; }
+
+    /* ── Experience ── */
+    .job { margin-bottom: 1.1rem; }
+    .job:last-child { margin-bottom: 0; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .job-title {
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--ink);
+    }
+    .job-dates {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .job-company {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+    .job ul {
+      list-style: none;
+      padding: 0;
+    }
+    .job li {
+      font-size: 1.03rem;
+      color: var(--warm-gray);
+      line-height: 1.45;
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.2rem;
+    }
+    .job li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+
+    /* ── Education ── */
+    .edu-degree {
+      font-weight: 600;
+      font-size: 1.08rem;
+      color: var(--ink);
+    }
+    .edu-school {
+      font-size: 1rem;
+      color: var(--warm-gray);
+    }
+
+    /* ── Software ── */
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .tag-dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .tag-light {
+      background: #e8edf2;
+      color: var(--navy);
+    }
+
+    /* ── Sidebar ── */
+    .sidebar section { margin-bottom: 1.3rem; }
+
+    .stat-card {
+      border-left: 3px solid var(--gold);
+      background: var(--cream);
+      padding: 0.6rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 0.92rem;
+      color: var(--warm-gray);
+    }
+
+    .cert-list, .spec-list {
+      list-style: none;
+      padding: 0;
+    }
+    .cert-list li {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .cert-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .cert-detail {
+      font-size: 0.88rem;
+      color: var(--navy);
+    }
+    .spec-list li {
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      padding: 0.12rem 0 0.12rem 1rem;
+      position: relative;
+    }
+    .spec-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .toolbar { display: none; }
+      .page {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+      }
+      @page { margin: 0.3in; size: letter; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .page { width: 100%; min-height: auto; }
+      .body-wrap { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .header { flex-direction: column; text-align: center; }
+      .header-contact { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="toolbar" id="toolbar">
+  <button class="btn-primary" onclick="window.print()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<div class="page" id="resume">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="photo-ring">
+      <img src="JLW.png" alt="Jamie L. Williams" onerror="this.style.background='linear-gradient(135deg,#16213e,#0f3460)'; this.alt='Photo';">
+    </div>
+    <div class="header-text">
+      <h1 class="header-name">Jamie L. Williams, EA, CB, OTC</h1>
+      <p class="header-tagline">Enrolled Agent &nbsp;·&nbsp; Tax Strategist &nbsp;·&nbsp; IRS Representation Specialist</p>
+      <div class="header-contact">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          619-504-2915
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          jamie@virtuallaunchpro.com
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Highland Park, MN
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/virtuallaunchpro" target="_blank" rel="noopener">linkedin.com/in/virtuallaunchpro</a>
+        </span>
+      </div>
+    </div>
+  </header>
+  <div class="accent-bar"></div>
+
+  <!-- BODY -->
+  <div class="body-wrap">
+
+    <!-- MAIN COLUMN -->
+    <div class="main">
+
+      <!-- Summary -->
+      <section>
+        <h2 class="sec-title">Professional Summary</h2>
+        <div class="sec-rule"></div>
+        <p class="summary-text">Enrolled Agent and Certified Bookkeeper with 10+ years of tax, accounting, and client service experience. As a contract EA, prepared 900+ individual returns and handled 350+ IRS representation actions — including Offers in Compromise, compliance cases, installment agreements, and penalty abatements — across 42 state jurisdictions for 6 tax resolution firms. Managed 540+ unique clients, many with multi-year delinquent filings spanning a decade of back tax years. Seeking contract or full-time opportunities in tax preparation, IRS representation, accounting, or finance operations in the Twin Cities metro area. Committed to Circular 230 compliance and delivering exceptional client outcomes.</p>
+      </section>
+
+      <!-- Accomplishments -->
+      <section>
+        <div class="accom-box">
+          <h2 class="sec-title" style="font-size:1.2rem; margin-bottom:0.5rem;">Client Feedback</h2>
+          <p>✓ "You are a remote worker and we are super happy" — Corporate Client</p>
+          <p>✓ "My affiliates are super happy and you are doing a great job!" — Corporate Client</p>
+          <p>✓ "I appreciate the excellent service you provide. I'm so happy with our work together" — Non-Profit Client</p>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section>
+        <h2 class="sec-title">Professional Experience</h2>
+        <div class="sec-rule"></div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Founder &amp; Full-Stack Developer</span>
+            <span class="job-dates">Nov 2023 – Present</span>
+          </div>
+          <div class="job-company">Virtual Launch Pro (virtuallaunch.pro) &nbsp;·&nbsp; Remote</div>
+          <ul>
+            <li>Designed, built, and deployed a 12-app SaaS ecosystem for tax professionals using Next.js 15, Cloudflare Workers, D1, R2, and Stripe billing</li>
+            <li>Architected a Turborepo monorepo with a shared UI library (@vlp/member-ui) powering all platform frontends</li>
+            <li>Built a unified Cloudflare Worker API backend serving authentication, billing, affiliate tracking, and tool usage across all platforms</li>
+            <li>Shipped 6 YouTube channels with AI-hosted educational content using HeyGen avatars and automated publishing workflows</li>
+            <li>Integrated Stripe Connect for affiliate commissions, Cal.com for scheduling, Resend for transactional email, and PostHog for analytics</li>
+            <li>Platforms include: TaxClaim Pro, Tax Monitor Pro, Tax Tools Arcade, Tax Prep Pro, Tax Avatar Pro, Website Lotto, Games VLP, and Developers VLP</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Contract Enrolled Agent / Tax Preparer</span>
+            <span class="job-dates">May 2022 – Nov 2023</span>
+          </div>
+          <div class="job-company">Lenore, Inc. (S-Corp) &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Contracted with 6 firms:</div>
+          <p style="font-size:0.95rem; color:var(--mid-gray); margin: 0.2rem 0 0.4rem 1.2rem; line-height:1.4;">ClearStart Tax &nbsp;·&nbsp; Stafford &nbsp;·&nbsp; Guardian &nbsp;·&nbsp; Curetax &nbsp;·&nbsp; Justice Tax &nbsp;·&nbsp; Delta</p>
+          <ul>
+            <li>Prepared 900+ individual tax returns (1040, 1040A, 1040SR) across 42 state jurisdictions</li>
+            <li>Handled 350+ IRS representation actions — 118 Offers in Compromise, 102 compliance cases, 59 installment agreements, 29 administrative holds, and penalty abatements</li>
+            <li>Managed 540+ unique clients, with 130+ multi-year delinquent filers requiring back returns spanning tax years 2012–2022</li>
+            <li>Represented taxpayers before IRS agents, appeals officers, and revenue officers in CDP/CAP hearings and CNC determinations</li>
+            <li>E-filed 270+ returns and prepared supporting documentation for paper-filed delinquent returns</li>
+            <li>Provided tax planning, bookkeeping, and financial statement preparation for small business clients</li>
+            <li>Obtained non-profit exemption reinstatements with federal and state tax authorities</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Owner / Enrolled Agent</span>
+            <span class="job-dates">May 2020 – May 2022</span>
+          </div>
+          <div class="job-company">Lenore, Inc. &nbsp;·&nbsp; San Diego, CA</div>
+          <ul>
+            <li>Established and operated full-service tax practice serving individual and business clients</li>
+            <li>Built client lifecycle workflows — intake, engagement letters, preparation, e-file, and post-filing support</li>
+            <li>Prepared individual (1040) and business returns (1065, 1120, 1120S) with multi-state filings</li>
+            <li>Represented clients before the IRS under Circular 230 authority</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Purchasing Coordinator</span>
+            <span class="job-dates">Mar 2015 – May 2020</span>
+          </div>
+          <div class="job-company">Casa de las Campanas, Skilled Nursing &nbsp;·&nbsp; Rancho Bernardo, CA</div>
+          <ul>
+            <li>Procured and managed $40K+ in medical supplies and $6K in office supplies across all care levels</li>
+            <li>Maintained 700+ item inventory database with quarterly physical counts and CFO reporting</li>
+            <li>Streamlined stockroom operations improving supply retrieval efficiency</li>
+            <li>Managed vendor relationships, invoicing, and pricing negotiations</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Staff Accountant</span>
+            <span class="job-dates">Sep 2011 – Oct 2013</span>
+          </div>
+          <div class="job-company">California Center for the Arts &nbsp;·&nbsp; Escondido, CA</div>
+          <ul>
+            <li>Prepared client billing and maintained accounts receivable for all revenue sources</li>
+            <li>Completed monthly bank reconciliations and managed cash deposits with accurate records</li>
+            <li>Contributed forensic data supporting unqualified audit opinions for FY10 and FY11</li>
+            <li>Built organized filing systems for cash, billing, and AR records</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section>
+        <h2 class="sec-title">Education</h2>
+        <div class="sec-rule"></div>
+        <p class="edu-degree">Bachelor of Science in Accounting (2011)</p>
+        <p class="edu-school">National University, San Diego, CA</p>
+      </section>
+
+      <!-- Software -->
+      <section>
+        <h2 class="sec-title">Software &amp; Tools</h2>
+        <div class="sec-rule"></div>
+        <p style="font-size:0.92rem; font-weight:600; color:var(--navy); margin-bottom:0.3rem;">Tax &amp; Accounting</p>
+        <div class="tag-grid" style="margin-bottom:0.6rem;">
+          <span class="tag tag-dark">CCH Prosystems</span>
+          <span class="tag tag-dark">Lacerte</span>
+          <span class="tag tag-dark">Drake</span>
+          <span class="tag tag-dark">IRS Logics</span>
+          <span class="tag tag-dark">QuickBooks</span>
+          <span class="tag tag-dark">Excel (Advanced)</span>
+        </div>
+        <p style="font-size:0.92rem; font-weight:600; color:var(--navy); margin-bottom:0.3rem;">Development &amp; Operations</p>
+        <div class="tag-grid">
+          <span class="tag tag-dark">Next.js</span>
+          <span class="tag tag-dark">TypeScript</span>
+          <span class="tag tag-dark">Tailwind CSS</span>
+          <span class="tag tag-dark">Cloudflare Workers</span>
+          <span class="tag tag-dark">Stripe API</span>
+          <span class="tag tag-dark">GitHub</span>
+          <span class="tag tag-dark">ClickUp</span>
+          <span class="tag tag-dark">PostHog</span>
+          <span class="tag tag-dark">HeyGen</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Core Competencies -->
+      <section>
+        <h2 class="sec-title">Core Competencies</h2>
+        <div class="sec-rule"></div>
+        <div class="tag-grid">
+          <span class="tag tag-light">Multi-State Filing (42)</span>
+          <span class="tag tag-light">Data Entry (80 wpm)</span>
+          <span class="tag tag-light">Financial Statements</span>
+          <span class="tag tag-light">Tax Code Knowledge</span>
+          <span class="tag tag-light">Depreciation / Amortization</span>
+          <span class="tag tag-light">GAAP Compliance</span>
+          <span class="tag tag-light">Tax Law Compliance</span>
+          <span class="tag tag-light">Payroll Familiarity</span>
+          <span class="tag tag-light">Return Preparation</span>
+          <span class="tag tag-light">SaaS Product Development</span>
+          <span class="tag tag-light">Remote Work Ready</span>
+        </div>
+      </section>
+
+      <!-- Highlights -->
+      <section>
+        <h2 class="sec-title">Key Highlights</h2>
+        <div class="sec-rule"></div>
+        <div class="stat-card">
+          <div class="stat-num">900+</div>
+          <div class="stat-label">Individual Returns Prepared</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">350+</div>
+          <div class="stat-label">IRS Representation Actions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">540+</div>
+          <div class="stat-label">Unique Clients Managed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">42</div>
+          <div class="stat-label">State Jurisdictions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">12</div>
+          <div class="stat-label">SaaS Apps Built &amp; Shipped</div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section>
+        <h2 class="sec-title">Certifications</h2>
+        <div class="sec-rule"></div>
+        <ul class="cert-list">
+          <li>Enrolled Agent<br><span class="cert-detail">#00144429-EA</span></li>
+          <li>Certified Bookkeeper</li>
+          <li>QuickBooks ProAdvisor</li>
+          <li>Oregon Tax Consultant</li>
+        </ul>
+      </section>
+
+      <!-- IRS Specialties -->
+      <section>
+        <h2 class="sec-title">IRS Specialties</h2>
+        <div class="sec-rule"></div>
+        <ul class="spec-list">
+          <li>Administrative Holds</li>
+          <li>Collection Appeal Process</li>
+          <li>Collection Due Process</li>
+          <li>Compliance (Individual)</li>
+          <li>Compliance (Business)</li>
+          <li>Currently Non-Collectible</li>
+          <li>Federal &amp; State Preparation</li>
+          <li>Financial Statement Prep</li>
+          <li>Installment Agreements</li>
+          <li>OIC (Offer in Compromise)</li>
+          <li>Penalty Abatement</li>
+          <li>Tax Research</li>
+        </ul>
+      </section>
+
+    </aside>
+  </div>
+</div>
+
+</body>
+</html>
